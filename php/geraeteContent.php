@@ -1,16 +1,14 @@
 <?php
-function contentGeraete()
+function contentGeraete($json)
 {
 	?>
 		<h3>Geräte</h3>
 	<?php
-	geraeteTables();
+	geraeteTables($json);
 	geraeteModal();
 }
-function geraeteTables()
+function geraeteTables($json)
 {
-	$jsonfile = file_get_contents('json/terra.json');
-	$json = json_decode($jsonfile, true); // decode the JSON into an associative array
 	foreach ($json as $terra)
 	{
 		echo 	'<table class="table" nummer="'.$terra['id'].'">
@@ -33,10 +31,8 @@ function geraeteTables()
 	};
 }
 
-function geraeteControl()
+function geraeteControl($json)
 {
-	$jsonfile = file_get_contents('json/terra.json');
-	$json = json_decode($jsonfile, true); // decode the JSON into an associative array
 	foreach ($json as $terra)
 	{
 		echo $terra['title']."<br>";
@@ -44,14 +40,16 @@ function geraeteControl()
 		{
 			echo '<form class="form-inline">
 				<div class="form-group">
-					<label for="my-checkbox">'.$geraet['title'].': </label>
-					<input type="checkbox" name="my-checkbox" checked>
-				</div>
-			</form>';
-			
-			
-			
-			echo '<div><label></label></div>';
+					<label for="my-checkbox">'.$geraet['title'].': </label>';
+					if($geraet['title'] === "true")
+					{	
+						echo '<input type="checkbox" name="my-checkbox" checked>';
+					}
+					else
+					{
+						echo '<input type="checkbox" name="my-checkbox">';
+					}
+					echo '</div></form>';
 		}
 		echo "<hr>";
 	}

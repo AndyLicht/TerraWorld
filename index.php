@@ -26,6 +26,10 @@
   </head>
 
   <body>
+  <?php
+	$jsonfile = file_get_contents('json/terra.json');
+	$json = json_decode($jsonfile, true); // decode the JSON into an associative array
+  ?>
 		<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
@@ -46,24 +50,24 @@
 					<div class="tab-pane fade active in" id="übersicht">
 						<p>
 							<?php
-								contentUebersicht();
+								contentUebersicht($json);
 							?>
 						</p>
 					</div>
 					<div class="tab-pane fade" id="steuerung">
 						<?php
-								geraeteControl();
+								geraeteControl($json);
 							?>
 					</div>
 					<div class="tab-pane fade" id="geräte">
 						<?php
-								contentGeraete();
+								contentGeraete($json);
 							?>
 					</div>
 					<div class="tab-pane fade" id="terrarien"> 
 						<p>
 							<?php
-								contentTerrarien();
+								contentTerrarien($json);
 							?>
 							
 						</p>
@@ -71,14 +75,14 @@
 					<div class="tab-pane fade" id="sensoren">
 						<p>
 							<?php
-								contentSensoren();
+								contentSensoren($json);
 							?>
 						</p>
 					</div>
 					<div class="tab-pane fade" id="zeiten">
 						<p>
 							<?php
-								contentZeiten();
+								contentZeiten($json);
 							?>
 						</p>
 					</div>

@@ -1,16 +1,14 @@
 <?php
-function contentSensoren()
+function contentSensoren($json)
 {
 	?>
 		<h3>Sensoren</h3>
 	<?php
-	sensorenTables();
+	sensorenTables($json);
 	sensorenModal();
 }
-function sensorenTables()
+function sensorenTables($json)
 {
-	$jsonfile = file_get_contents('json/terra.json');
-	$json = json_decode($jsonfile, true); // decode the JSON into an associative array
 	foreach ($json as $terra)
 	{
 		echo 	'<table class="table" nummer="'.$terra['id'].'">

@@ -1,13 +1,13 @@
 <?php
-function contentTerrarien()
+function contentTerrarien($json)
 {
 	?>
 		<h3>Terrarien <button type="button" id="addTerra" class="btn btn-default" data-toggle="modal" data-target="#terrarium"><span class="glyphicon glyphicon-plus" ></span></button></h3>
 	<?php
-	terraTable();
+	terraTable($json);
 	terrariumModal();
 }
-function terraTable()
+function terraTable($json)
 {
 	?>
 	<table class="table">
@@ -19,8 +19,6 @@ function terraTable()
 	</thead>
 	<tbody id="terraBody">
 	<?php
-		$jsonfile = file_get_contents('json/terra.json');
-		$json = json_decode($jsonfile, true); // decode the JSON into an associative array
 		foreach ($json as $terra)
 		{
 			echo '<tr><td key="id">'.$terra['id'].'</td><td key="title">'.$terra['title'].'</td><td key="description">'.$terra['description'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" itemType="terrarium"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="terrarium"></span></td></tr>';

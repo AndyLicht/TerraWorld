@@ -1,16 +1,14 @@
 <?php
-function contentZeiten()
+function contentZeiten($json)
 {
 	?>
 		<h2>Zeiten</h2>
 	<?php
-	zeitenTables();
+	zeitenTables($json);
 	zeitenModal();
 }
-function zeitenTables()
+function zeitenTables($json)
 {
-	$jsonfile = file_get_contents('json/terra.json');
-	$json = json_decode($jsonfile, true); // decode the JSON into an associative array
 	foreach ($json as $terra)
 	{
 		echo '<h3>'.$terra['title'].'</h3><br>';
