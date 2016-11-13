@@ -1,12 +1,17 @@
 //Delete, vorbereiten der Daten
 $(document.body).on('click', '.deleteItem' ,function()
 {
-	_sendRequest({id:$(this).parent().parent().children(':first-child').html(), gtype:'delete',itemType:$(this).attr('itemType')});
+	terraid = $(this).parent().parent().parent().parent().attr('terraid');
+	geraeteid = $(this).parent().parent().parent().parent().attr('geraeteid');
+	_sendRequest({id:$(this).parent().parent().children(':first-child').html(), gtype:'delete',itemType:$(this).attr('itemType'),terraid:terraid, geraeteid:geraeteid});
 })
 //Manipulate, Modal öffnen und Felder aufzeigen
 $(document.body).on('click', '.manipulateItem' ,function()
 {	
 	itemClass = $(this).attr('itemType');
+	terraid = $(this).parent().parent().parent().parent().attr('terraid');
+	console.log(terraid);
+	geraeteid = $(this).parent().parent().parent().parent().attr('geraeteid');
 	$(this).parent().parent().children('td').each(function()
 	{
 		key = $(this).attr('key');
@@ -24,16 +29,16 @@ $(document.body).on('click', '.manipulateItem' ,function()
 
 $('.modal').on('show.bs.modal', function (e) 
 {
-	console.log($(e.relatedTarget).attr('id'));
-	try
+	if(typeof $(e.relatedTarget).attr('terraid') != 'undefined')
 	{
-		parentID = $(e.relatedTarget).attr('id');
+		terraid = $(e.relatedTarget).attr('terraid');
 	}
-	catch(err)
+	if(typeof $(e.relatedTarget).attr('geraeteid') != 'undefined')
 	{
-		parentID = "";
+		geraeteid = $(e.relatedTarget).attr('geraeteid');
 	}
-	
+	console.log(geraeteid);
+	console.log(terraid);
 })
 
 
@@ -42,7 +47,7 @@ $('.modal').on('show.bs.modal', function (e)
 $('.saveItem').click(function()
 {
 	itemClass = $(this).attr('itemType');
-	data = {gtype:'change',itemType:itemClass, parentID:parentID};	
+	data = {gtype:'change',itemType:itemClass, terraid:terraid, geraeteid:geraeteid};	
 	$('#'+itemClass+'Body').children('.modalInput').each(function()
 	{
 		data[$(this).attr('key')] = $(this).val();
@@ -56,11 +61,11 @@ $('.saveItem').click(function()
 
 var _sendRequest = function(data)
 {
-	console.log('Request zum Manager');
+	console.log(data);
 	$.ajax(
     {
 		type:'POST',
-		url: base_url+'/php/manager.php',
+		url: app_url_php+'manager.php',
 		data: data
     })
     .done(function(response)
@@ -74,8 +79,6 @@ var _sendRequest = function(data)
 			alert('ERROR, siehe console.log');
 			console.log(response);
 		}
-		//$('#sensorenModal').modal('hide');
-		
     })
     .fail(function(XMLHttpRequest, textStatus, errorThrown)
     {

@@ -9,14 +9,14 @@ function contentZeiten($json)
 }
 function zeitenTables($json)
 {
-	foreach ($json as $terra)
+	foreach ($json as $key => $terra)
 	{
 		echo '<h3>'.$terra['title'].'</h3><br>';
-		foreach ($terra['geraete'] as $geraet)
+		foreach ($terra['geraete'] as $gkey => $geraet)
 		{
 			echo '<h4>'.$geraet['title'].'</h4><br>';
-			echo 	'<table class="table" nummer="'.$geraet['id'].'">
-						<caption><h3>'.$geraet['title'].'  <button type="button" id="'.$geraet['id'].'" class="btn btn-default" data-toggle="modal" data-target="#zeit"><span class="glyphicon glyphicon-plus" ></span></button></h3></caption>
+			echo 	'<table class="table" geraeteid="'.$gkey.'" terraid="'.$key.'">
+						<caption><h3>'.$geraet['title'].'  <button type="button" terraid="'.$key.'" geraeteid ="'.$gkey.'"class="btn btn-default" data-toggle="modal" data-target="#zeit"><span class="glyphicon glyphicon-plus" ></span></button></h3></caption>
 						<thead>
 							<th>#</th>
 							<th>An</th>
@@ -24,9 +24,9 @@ function zeitenTables($json)
 							<th>Option</th>
 						</thead>
 						<tbody>';
-							foreach($geraet['schaltung'] as $schaltung)
+							foreach($geraet['schaltung'] as $skey => $schaltung)
 							{
-								echo '<tr><td key="id">'.$schaltung['id'].'</td><td key="on">'.$schaltung['on'].'</td><td key="off">'.$schaltung['off'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" itemType="zeit"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="zeit"></span></td></tr>';
+								echo '<tr><td key="id">'.$skey.'</td><td key="on">'.$schaltung['on'].'</td><td key="off">'.$schaltung['off'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" geraeteid="" terraid="'.$key.'" itemType="zeit"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="zeit"></span></td></tr>';
 							}
 						echo '</tbody>
 				</table>';

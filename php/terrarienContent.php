@@ -10,7 +10,7 @@ function contentTerrarien($json)
 function terraTable($json)
 {
 	?>
-	<table class="table">
+	<table class="table" terraid="" geraeteid="">
 	<thead>
 		<th>#</th>
 		<th>Bezeichnung</th>
@@ -19,9 +19,9 @@ function terraTable($json)
 	</thead>
 	<tbody id="terraBody">
 	<?php
-		foreach ($json as $terra)
+		foreach ($json as $key => $terra)
 		{
-			echo '<tr><td key="id">'.$terra['id'].'</td><td key="title">'.$terra['title'].'</td><td key="description">'.$terra['description'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" itemType="terrarium"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="terrarium"></span></td></tr>';
+			echo '<tr><td key="id">'.$key.'</td><td key="title">'.$terra['title'].'</td><td key="description">'.$terra['description'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" itemType="terrarium"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="terrarium"></span></td></tr>';
 		};
 	?>
 	</tbody>

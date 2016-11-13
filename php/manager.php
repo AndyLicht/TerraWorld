@@ -29,69 +29,42 @@
 		switch ($_POST['itemType'])
 		{
 			case "terrarium":
-				$obj = (object)[
-					'id' => uniqid(),
+				$arr =  array(
 					'title' => $_POST['title'],
 					'description' => $_POST['description'],
 					'sensoren' => array(),
 					'geraete' => array()
-				];
-				$GLOBALS['json'][] = $obj;
+				);
+				$GLOBALS['json'][uniqid()] = $arr;				
 				break;
 			case "sensor":
-				foreach($GLOBALS['json'] as $key => $terra)
-				{
-					if ($terra['id'] === $_POST['parentID'])
-					{
-						$obj = (object)[
-							'id' => uniqid(),
-							'title' => $_POST['title'],
-							'number' => $_POST['number'],
-							'temp' => '',
-							'humidity' => '',
-							'time' => ''					
-						];
-						$GLOBALS['json'][$key]['sensoren'][] = $obj;
-						break;
-					}
-				}
+				$arr = array(
+					'title' => $_POST['title'],
+					'number' => $_POST['number'],
+					'temp' => '',
+					'humidity' => '',
+					'time' => ''
+				);				
+				$GLOBALS['json'][$_POST['terraid']]['sensoren'][uniqid()] = $arr;
 				break;
 			case "geraet":
-				foreach($GLOBALS['json'] as $key => $terra)
-				{
-					if ($terra['id'] === $_POST['parentID'])
-					{
-						$obj = (object)[
-							'id' => uniqid(),
-							'title' => $_POST['title'],
-							'type' => $_POST['type'],
-							'device' => $_POST['device'],
-							'number' => $_POST['number'],
-							'status' => false,
-							'schaltung' => []
-						];
-						$GLOBALS['json'][$key]['geraete'][] = $obj;
-						break;
-					}
-				}
+				$arr = array(
+					'id' => uniqid(),
+					'title' => $_POST['title'],
+					'type' => $_POST['type'],
+					'device' => $_POST['device'],
+					'number' => $_POST['number'],
+					'status' => false,
+					'schaltung' => []
+				);
+				$GLOBALS['json'][$_POST['terraid']]['geraete'][uniqid()] = $arr;
 				break;
 			case "zeit":
-				foreach($GLOBALS['json'] as $tkey => $terra)
-				{
-					foreach($terra['geraete'] as $gkey => $geraet)
-					{
-						if($geraet['id'] === $_POST['parentID'])
-						{
-							$obj = (object)[
-								'id' => uniqid(),
-								'on' => $_POST['on'],
-								'off' => $_POST['off'],
-							];
-							$GLOBALS['json'][$tkey]['geraete'][$gkey]['schaltung'][] = $obj;
-							break;
-						}	
-					}
-				}
+				$arr = array(
+					'on' => $_POST['on'],
+					'off' => $_POST['off'],
+				);
+				$GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['geraeteid']]['schaltung'][uniqid()] = $arr;
 				break;
 		}
 	}
@@ -101,53 +74,17 @@
 		switch ($_POST['itemType'])
 		{
 			case 'terrarium':
-				foreach ($GLOBALS['json'] as $key => $item)
-				{
-					if ($item['id'] === $_POST['id'])
-					{
-						unset($GLOBALS['json'][$key]);
-						break;
-					}
-				}
+				unset($GLOBALS['json'][$_POST['id']]);
+				break;
 			case 'sensor':
-				foreach ($GLOBALS['json'] as $key => $terra)
-				{
-					foreach ($terra['sensoren'] as $skey => $sensor)
-					{
-						if($sensor['id'] === $_POST['id'])
-						{
-							unset($GLOBALS['json'][$key]['sensoren'][$skey]);
-							break;
-						}
-					}
-				}
+				unset($GLOBALS['json'][$_POST['terraid']]['sensoren'][$_POST['id']]);
+				break;			
 			case 'geraet':
-				foreach ($GLOBALS['json'] as $key => $terra)
-				{
-					foreach ($terra['geraete'] as $gkey => $geraet)
-					{
-						if($geraet['id'] === $_POST['id'])
-						{
-							unset($GLOBALS['json'][$key]['geraete'][$gkey]);
-							break;
-						}
-					}
-				}
+				unset($GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['id']]);
+				break;
 			case 'zeit':
-				foreach ($GLOBALS['json'] as $tkey => $terra)
-				{
-					foreach ($terra['geraete'] as $gkey => $geraet)
-					{
-						foreach ($geraet['schaltung'] as $skey => $schaltung)
-						{
-							if($schaltung['id'] === $_POST['id'])
-							{
-								unset($GLOBALS['json'][$tkey]['geraete'][$gkey]['schaltung'][$skey]);
-								break;
-							}
-						}
-					}
-				}
+				unset($GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['geraeteid']]['schaltung'][$_POST['id']]);
+				break;		
 		}
 	}
 	
@@ -157,85 +94,59 @@
 		switch ($_POST['itemType'])
 		{
 			case "terrarium":
-				foreach ($GLOBALS['json'] as $key => $terra)
-				{
-					if($terra['id'] === $_POST['id'])
-					{
-						$GLOBALS['json'][$key]['title'] = $_POST['title'];
-						$GLOBALS['json'][$key]['description'] = $_POST['description'];
-						break;
-					}
-				}
-			case "sensor":
-				foreach ($GLOBALS['json'] as $key => $terra)
-				{
-					foreach ($terra['sensoren'] as $skey => $sensor)
-					{
-						if($sensor['id'] === $_POST['id'])
-						{
-							$GLOBALS['json'][$key]['sensoren'][$skey]['title'] = $_POST['title'];
-							$GLOBALS['json'][$key]['sensoren'][$skey]['number'] = $_POST['number'];
-							break;
-						}
-					}
-				}
+				$GLOBALS['json'][$_POST['id']]['title'] = $_POST['title'];
+				$GLOBALS['json'][$_POST['id']]['description'] = $_POST['description'];
+				break;
+			case "sensor":			
+				$GLOBALS['json'][$_POST['terraid']]['sensoren'][$_POST['id']]['title'] = $_POST['title'];
+				$GLOBALS['json'][$_POST['terraid']]['sensoren'][$_POST['id']]['number'] = $_POST['number'];
+				break;
 			case "geraet":
-				foreach ($GLOBALS['json'] as $key => $terra)
-				{
-					foreach ($terra['geraete'] as $gkey => $geraet)
-					{
-						if($geraet['id'] === $_POST['id'])
-						{
-							$GLOBALS['json'][$key]['geraete'][$gkey]['title'] = $_POST['title'];
-							$GLOBALS['json'][$key]['geraete'][$gkey]['type'] = $_POST['type'];
-							$GLOBALS['json'][$key]['geraete'][$gkey]['device'] = $_POST['device'];
-							$GLOBALS['json'][$key]['geraete'][$gkey]['number'] = $_POST['number'];
-							break;
-						}
-					}
-				}
+				$GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['id']]['title'] = $_POST['title'];
+				$GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['id']]['type'] = $_POST['type'];
+				$GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['id']]['device'] = $_POST['device'];
+				$GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['id']]['number'] = $_POST['number'];
+				break;
 			case "zeit":
-				foreach ($GLOBALS['json'] as $tkey => $terra)
-				{
-					foreach ($terra['geraete'] as $gkey => $geraet)
-					{
-						foreach ($geraet['schaltung'] as $skey => $schaltung)
-						{
-							if($schaltung['id'] === $_POST['id'])
-							{
-								$GLOBALS['json'][$tkey]['geraete'][$gkey]['schaltung'][$skey]['on'] = $_POST['on'];
-								$GLOBALS['json'][$tkey]['geraete'][$gkey]['schaltung'][$skey]['off'] = $_POST['off'];
-								break;
-							}
-						}
-					}
-				}
+				$GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['geraeteid']]['schaltung'][$_POST['id']]['on'] = $_POST['on'];
+				$GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['geraeteid']]['schaltung'][$_POST['id']]['off'] = $_POST['off'];
+				break;
 		}
 	}
 	
-	
 	function loadJSON()
 	{
-		//$jsonfile = file_get_contents('../json/terra.json');
-		$requester =  new ZMQSocket(new ZMQContext(), ZMQ::SOCKET_REQ,"MySock1");
-		$requester->setSockOpt(ZMQ::SOCKOPT_LINGER,2000);
-		$requester->connect("tcp://127.0.0.1:5000");
-		$requester->send("i");
-		$reply = $requester->recv();
-		$GLOBALS['json'] = json_decode($reply);
-		//$GLOBALS['json'] = json_decode($jsonfile, true); // decode the JSON into an associative array
+		if(strpos(PHP_OS, 'WIN') !== false)
+		{
+			$jsonfile = file_get_contents('../json/terra.json');
+			$GLOBALS['json']= json_decode($jsonfile, true); // decode the JSON into an associative array
+		}
+		else
+		{	
+			$requester =  new ZMQSocket(new ZMQContext(), ZMQ::SOCKET_REQ,"MySock1");
+			$requester->setSockOpt(ZMQ::SOCKOPT_LINGER,2000);
+			$requester->connect("tcp://127.0.0.1:5000");
+			$requester->send("i");
+			$reply = $requester->recv();
+			$GLOBALS['json'] = json_decode($reply);
+		}
 	}
 	
 	function writeJSON()
 	{
-		//$fp = fopen('../json/terra.json', 'w');
-		//fwrite($fp, json_encode($GLOBALS['json']));
-		//fclose($fp);
-		$requester =  new ZMQSocket(new ZMQContext(), ZMQ::SOCKET_REQ,"MySock1");
-		$requester->setSockOpt(ZMQ::SOCKOPT_LINGER,2000);
-		$requester->connect("tcp://127.0.0.1:5000");
-		$requester->send("i/".json_encode($GLOBALS['json']));
-		$reply = $requester->recv();
-		//echo $reply;
+		if(strpos(PHP_OS, 'WIN') !== false)
+		{
+			$fp = fopen('../json/terra.json', 'w');
+			fwrite($fp, json_encode($GLOBALS['json']));
+			fclose($fp);
+		}
+		else
+		{
+			$requester =  new ZMQSocket(new ZMQContext(), ZMQ::SOCKET_REQ,"MySock1");
+			$requester->setSockOpt(ZMQ::SOCKOPT_LINGER,2000);
+			$requester->connect("tcp://127.0.0.1:5000");
+			$requester->send("i/".json_encode($GLOBALS['json']));
+			$reply = $requester->recv();
+		}
 	}
 ?>

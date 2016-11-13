@@ -12,7 +12,7 @@ $('#importButton').click(function(e)
 	$.ajax(
     {
 		type:'POST',
-		url: base_url+'/terraworld/php/test.php',
+		url: app_url_php+'test.php',
     })
     .done(function(response)
     {

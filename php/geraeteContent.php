@@ -9,10 +9,10 @@ function contentGeraete($json)
 }
 function geraeteTables($json)
 {
-	foreach ($json as $terra)
+	foreach ($json as $key => $terra)
 	{
-		echo 	'<table class="table" nummer="'.$terra['id'].'">
-					<caption><h3>'.$terra['title'].'  <button type="button" id="'.$terra['id'].'" class="btn btn-default" data-toggle="modal" data-target="#geraet"><span class="glyphicon glyphicon-plus" ></span></button></h3></caption>
+		echo 	'<table class="table" terraid="'.$key.'" geraeteid="">
+					<caption><h3>'.$terra['title'].'('.$key.') <button type="button" geraeteid="" terraid="'.$key.'" class="btn btn-default" data-toggle="modal" data-target="#geraet"><span class="glyphicon glyphicon-plus" ></span></button></h3></caption>
 					<thead>
 						<th>#</th>
 						<th>Bezeichnung</th>
@@ -22,9 +22,9 @@ function geraeteTables($json)
 						<th>Option</th>
 					</thead>
 					<tbody>';
-					foreach($terra['geraete'] as $geraet)
+					foreach($terra['geraete'] as $gkey => $geraet)
 					{
-						echo '<tr><td key="id">'.$geraet['id'].'</td><td key="title">'.$geraet['title'].'</td><td key="type">'.$geraet['type'].'</td><td key="device">'.$geraet['device'].'</td><td key="number">'.$geraet['number'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" itemType="geraet"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="geraet"></span></td></tr>';
+						echo '<tr><td key="id">'.$gkey.'</td><td key="title">'.$geraet['title'].'</td><td key="type">'.$geraet['type'].'</td><td key="device">'.$geraet['device'].'</td><td key="number">'.$geraet['number'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" geraeteid="" terraid="'.$key.'" itemType="geraet"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="geraet"></span></td></tr>';
 					}
 		echo 		'</tbody>
 				</table>';

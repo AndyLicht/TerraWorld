@@ -9,10 +9,10 @@ function contentSensoren($json)
 }
 function sensorenTables($json)
 {
-	foreach ($json as $terra)
+	foreach ($json as $key => $terra)
 	{
-		echo 	'<table class="table" nummer="'.$terra['id'].'">
-					<caption><h3>'.$terra['title'].'  <button type="button" id="'.$terra['id'].'" class="btn btn-default" data-toggle="modal" data-target="#sensor"><span class="glyphicon glyphicon-plus" ></span></button></h3></caption>
+		echo 	'<table class="table" terraid="'.$key.'" geraeteid=""> 
+					<caption><h3>'.$terra['title'].'('.$key.') <button type="button" geraeteid="" terraid="'.$key.'" class="btn btn-default" data-toggle="modal" data-target="#sensor"><span class="glyphicon glyphicon-plus" ></span></button></h3></caption>
 					<thead>
 						<th>#</th>
 						<th>Bezeichnung</th>
@@ -20,9 +20,9 @@ function sensorenTables($json)
 						<th>Option</th>
 					</thead>
 					<tbody>';
-					foreach($terra['sensoren'] as $sensor)
+					foreach($terra['sensoren'] as $skey => $sensor)
 					{
-						echo '<tr><td key="id">'.$sensor['id'].'</td><td key="title">'.$sensor['title'].'</td><td key="number">'.$sensor['number'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" itemType="sensor"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="sensor"></span></td></tr>';
+						echo '<tr><td key="id">'.$skey.'</td><td key="title">'.$sensor['title'].'</td><td key="number">'.$sensor['number'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" geraeteid="" terraid="'.$key.'" itemType="sensor"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="sensor"></span></td></tr>';
 					}
 		echo 		'</tbody>
 				</table>';
