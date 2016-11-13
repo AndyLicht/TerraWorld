@@ -27,8 +27,19 @@
 
   <body>
   <?php
-	$jsonfile = file_get_contents('json/terra.json');
-	$json = json_decode($jsonfile, true); // decode the JSON into an associative array
+	//$jsonfile = file_get_contents('json/terra.json');
+	//$json = json_decode($jsonfile, true); // decode the JSON into an associative array
+	$requester =  new ZMQSocket(new ZMQContext(), ZMQ::SOCKET_REQ,"MySock1");
+	$requester->setSockOpt(ZMQ::SOCKOPT_LINGER,2000);
+	$requester->connect("tcp://127.0.0.1:5000");
+	$requester->send("i");
+	$reply = $requester->recv();
+	$json = json_decode($reply);
+	echo "HUU<br>";
+	var_dump($reply);
+	echo "<br>";
+	var_dump($json);
+	echo "<br>uuh";
   ?>
 		<div class="container-fluid">
 		<div class="row">

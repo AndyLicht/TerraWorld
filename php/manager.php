@@ -216,14 +216,26 @@
 	
 	function loadJSON()
 	{
-		$jsonfile = file_get_contents('../json/terra.json');
-		$GLOBALS['json'] = json_decode($jsonfile, true); // decode the JSON into an associative array
+		//$jsonfile = file_get_contents('../json/terra.json');
+		$requester =  new ZMQSocket(new ZMQContext(), ZMQ::SOCKET_REQ,"MySock1");
+		$requester->setSockOpt(ZMQ::SOCKOPT_LINGER,2000);
+		$requester->connect("tcp://127.0.0.1:5000");
+		$requester->send("i");
+		$reply = $requester->recv();
+		$GLOBALS['json'] = json_decode($reply);
+		//$GLOBALS['json'] = json_decode($jsonfile, true); // decode the JSON into an associative array
 	}
 	
 	function writeJSON()
 	{
-		$fp = fopen('../json/terra.json', 'w');
-		fwrite($fp, json_encode($GLOBALS['json']));
-		fclose($fp);
+		//$fp = fopen('../json/terra.json', 'w');
+		//fwrite($fp, json_encode($GLOBALS['json']));
+		//fclose($fp);
+		$requester =  new ZMQSocket(new ZMQContext(), ZMQ::SOCKET_REQ,"MySock1");
+		$requester->setSockOpt(ZMQ::SOCKOPT_LINGER,2000);
+		$requester->connect("tcp://127.0.0.1:5000");
+		$requester->send("i/".json_encode($GLOBALS['json']));
+		$reply = $requester->recv();
+		//echo $reply;
 	}
 ?>

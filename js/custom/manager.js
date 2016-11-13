@@ -54,16 +54,13 @@ $('.saveItem').click(function()
 //Felder leeren, wenn das Modal geschlossen wird
 //bei close wird das Feld geschlossen
 
-
-
-
 var _sendRequest = function(data)
 {
 	console.log('Request zum Manager');
 	$.ajax(
     {
 		type:'POST',
-		url: base_url+'/terraworld/php/manager.php',
+		url: base_url+'/php/manager.php',
 		data: data
     })
     .done(function(response)
@@ -80,8 +77,10 @@ var _sendRequest = function(data)
 		//$('#sensorenModal').modal('hide');
 		
     })
-    .fail(function()
+    .fail(function(XMLHttpRequest, textStatus, errorThrown)
     {
-		console.log('error');
+		console.log('Error');
+		console.log(textStatus);
+		console.log(errorThrown);
     });
 }
