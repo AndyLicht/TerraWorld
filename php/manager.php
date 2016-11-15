@@ -35,7 +35,8 @@
 					'sensoren' => array(),
 					'geraete' => array()
 				);
-				$GLOBALS['json'][uniqid()] = $arr;				
+				//var_dump($GLOBALS['json']);
+				$GLOBALS['json'][uniqid()] = $arr;
 				break;
 			case "sensor":
 				$arr = array(
@@ -128,7 +129,9 @@
 			$requester->connect("tcp://127.0.0.1:5000");
 			$requester->send("i");
 			$reply = $requester->recv();
-			$GLOBALS['json'] = json_decode($reply);
+			$reply = substr($reply,0,-1);
+			$reply = substr($reply,1);
+			$GLOBALS['json'] = json_decode($reply,true);
 		}
 	}
 	
@@ -145,6 +148,7 @@
 			$requester =  new ZMQSocket(new ZMQContext(), ZMQ::SOCKET_REQ,"MySock1");
 			$requester->setSockOpt(ZMQ::SOCKOPT_LINGER,2000);
 			$requester->connect("tcp://127.0.0.1:5000");
+			//var_dump($GLOBALS['json']);
 			$requester->send("i/".json_encode($GLOBALS['json']));
 			$reply = $requester->recv();
 		}

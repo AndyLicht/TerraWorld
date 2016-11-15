@@ -39,7 +39,10 @@
 		$requester->connect("tcp://127.0.0.1:5000");
 		$requester->send("i");
 		$reply = $requester->recv();
-		$json = json_decode($reply);
+		$reply = substr($reply,0,-1);
+		$reply = substr($reply,1);
+		$json = json_decode($reply, true);
+		//var_dump($json);
 	}
   ?>
 		<div class="container-fluid">
@@ -63,6 +66,11 @@
 						<p>
 							<?php
 								contentUebersicht($json);
+								echo"<div>";
+								var_dump($reply);
+								echo "<br>";
+								var_dump($json);
+								echo "</div>";
 							?>
 						</p>
 					</div>
