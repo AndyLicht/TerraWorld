@@ -33,21 +33,21 @@ function geraeteTables($json)
 
 function geraeteControl($json)
 {
-	foreach ($json as $terra)
+	foreach ($json as $tkey => $terra)
 	{
 		echo $terra['title']."<br>";
-		foreach ($terra['geraete'] as $geraet)
+		foreach ($terra['geraete'] as $gkey => $geraet)
 		{
 			echo '<form class="form-inline">
 				<div class="form-group">
-					<label for="my-checkbox">'.$geraet['title'].': </label>';
-					if($geraet['title'] === "true")
+					<label for="my-checkbox">'.$geraet['title'].$geraet['status'].': </label>';
+					if($geraet['status'] === "true" || $geraet['status'] === "True" )
 					{	
-						echo '<input type="checkbox" name="my-checkbox" checked>';
+						echo '<input tid="'.$tkey.'" gid="'.$gkey.'" type="checkbox" name="my-checkbox" checked>';
 					}
 					else
 					{
-						echo '<input type="checkbox" name="my-checkbox">';
+						echo '<input tid="'.$tkey.'" gid="'.$gkey.'" type="checkbox" name="my-checkbox">';
 					}
 					echo '</div></form>';
 		}

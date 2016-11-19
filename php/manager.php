@@ -129,8 +129,6 @@
 			$requester->connect("tcp://127.0.0.1:5000");
 			$requester->send("i");
 			$reply = $requester->recv();
-			$reply = substr($reply,0,-1);
-			$reply = substr($reply,1);
 			$GLOBALS['json'] = json_decode($reply,true);
 		}
 	}
