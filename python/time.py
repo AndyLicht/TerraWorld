@@ -10,6 +10,6 @@ while True:
         if second_old != t.second:
 #		print t
                 second_old = t.second
-                message = "t/"+str(t.hour)+"/"+str(t.minute)+"/"+str(t.second)
+                message = "t/"+str(t.hour)+":"+str(t.minute)+":"+str(t.second)
                 socket.send(message)
                 msg_in = socket.recv()

@@ -9,5 +9,7 @@ ser = serial.Serial('/dev/ttyUSB0',115200)
 
 while True:
         message = ser.readline()
+	message = message.replace("\r","")
+	message = message.replace("\n","")
         socket.send(message)
         msg_in = socket.recv()
