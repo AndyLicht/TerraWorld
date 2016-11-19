@@ -1,0 +1,174 @@
+{
+	"time":
+	{
+		"stunde":"0",
+		"minute":"0",
+		"sekunde":"0"
+	},
+	"sensoren":[
+	{
+		"sensor_unten_links":
+		{
+			"channel": "1",
+			"temp":"10",
+			"luftfeuchtigkeit":"50",
+			"stunde":"stunde",
+			"minute":"minute",
+			"sekunde":"sekunde"
+		}
+	},{
+		"sensor_unten_rechts":
+		{
+			"channel": "2",
+			"temp": "20",
+			"luftfeuchtigkeit":"20",
+			"stunde":"stunde",
+			"minute":"minute",
+			"sekunde":"sekunde"
+		}
+	},{
+		"sensor_oben_links":
+		{
+			"channel":"3",
+			"temp": "30",
+			"luftfeuchtigkeit":"30",
+			"stunde":"stunde",
+			"minute":"minute",
+			"sekunde":"sekunde"
+		}
+	},{
+		"sensor_oben_rechts":
+		{
+			"channel":"4",
+			"temp":"40",
+			"luftfeuchtigkeit":"40",
+			"stunde":"stunde",
+			"minute":"minute",
+			"sekunde":"sekunde"
+		}
+	}],
+	"geraete":[
+	{
+		"pin":"7",
+		"status":"false",
+		"bezeichnung":"tageslichtlampen",
+		"schaltung":[
+		{
+			"id":"1",
+			"on":"8/30/0",
+			"off":"12/0/0"
+		},{
+			"id":"2",
+			"on":"15/0/0",
+			"off":"18/0/0"
+		}]
+	},{
+		"pin":"8",
+		"status":"false",
+		"bezeichnung":"beregnungsanlage",
+		"schaltung":[
+		{
+			"id":"3",
+			"on":"9/0/0",
+			"off":"9/0/30"
+		},{
+			"id":"4",
+			"on":"11/0/0",
+			"off":"11/0/30"
+		},{
+			"id":"5",
+			"on":"19/0/0",
+			"off":"19/0/30"
+		}]
+	},{
+		"pin":"9",
+		"status":"false",
+		"bezeichnung":"heizkabel_unten",
+		"schaltung":[
+		{
+			"id":"6",
+			"on":"0/0/0",
+			"off":"0/0/0"
+		}]
+	},{
+		"pin":"10",
+		"status":"false",
+		"bezeichnung":"heizkabel_oben",
+		"schaltung":[
+		{
+			"id":"7",
+			"on":"0/0/0",
+			"off":"0/0/0"
+		}]
+	},{
+		"pin":"11",
+		"status":"false",
+		"bezeichnung":"heizlampe_oben_links",
+		"schaltung":[
+		{
+			"id":"8",
+			"on":"11/0/0",
+			"off":"17/0/0"
+		}]
+	},{
+		"pin":"23",
+		"status":"false",
+		"bezeichnung":"heizlampe_oben_rechts",
+		"schaltung":[
+		{
+			"id":"9",
+			"on":"10/0/0",
+			"off":"19/0/0"
+		}]
+	},{
+		"pin":"24",
+		"status":"false",
+		"bezeichnung":"heizlampe_unten_links",
+		"schaltung":[
+		{
+			"id":"10",
+			"on":"11/0/0",
+			"off":"17/0/0"
+		}]
+	},{
+		"pin":"25",
+		"status":"false",
+		"bezeichnung":"heizlampe_unten_rechts",
+		"schaltung":[
+		{
+			"id":"11",
+			"on":"10/0/0",
+			"off":"19/0/0"
+		}]
+	}]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

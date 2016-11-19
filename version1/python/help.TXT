@@ -1,0 +1,1 @@
+Es werden für den produktiven Betrieb lediglich die Dateien server.py, time.py und climate.py benötigt, die restlichen Dateien habe ich lediglich hinzugefügt, weil sie mir bei der Entwicklung geholfen haben
