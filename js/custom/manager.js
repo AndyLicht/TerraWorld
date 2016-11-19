@@ -61,29 +61,28 @@ $('.saveItem').click(function()
 
 var _sendRequest = function(data)
 {
-	console.log(data);
-	$.ajax(
+    $.ajax(
     {
-		type:'POST',
-		url: app_url_php+'manager.php',
-		data: data
+	type:'POST',
+	url: app_url_php+'manager.php',
+	data: data
     })
     .done(function(response)
     {
-		if (response === 'OK')
-		{
-			location.reload();
-		}
-		else
-		{
-			alert('ERROR, siehe console.log');
-			console.log(response);
-		}
+	if (response === 'OK')
+	{
+	    location.reload();
+	}
+	else
+	{
+	    alert('ERROR, siehe console.log');
+	    console.log(response);
+	}
     })
     .fail(function(XMLHttpRequest, textStatus, errorThrown)
     {
-		console.log('Error');
-		console.log(textStatus);
-		console.log(errorThrown);
+	console.log('Error');
+	console.log(textStatus);
+	console.log(errorThrown);
     });
 }

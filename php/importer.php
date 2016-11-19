@@ -6,7 +6,7 @@ if($_POST['type'] === 'export')
 else
 {
     $json = loadJSON();
-    echo json_encode($json,JSON_UNESCAPED_SLASHES);
+    echo $json;
 }
 
 
@@ -41,8 +41,10 @@ function writeJSON($data)
 	$requester =  new ZMQSocket(new ZMQContext(), ZMQ::SOCKET_REQ,"MySock1");
 	$requester->setSockOpt(ZMQ::SOCKOPT_LINGER,2000);
 	$requester->connect("tcp://127.0.0.1:5000");
-	$requester->send("i/".json_encode($data));
+//	$requester->send("i/".json_encode($data));
+	$requester->send("i/".$data);
 	$reply = $requester->recv();
+	echo $reply;
     }
 }
 ?>

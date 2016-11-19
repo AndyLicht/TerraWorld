@@ -5,8 +5,6 @@ $('#myTabs a').click(function (e)
 	$(this).tab('show')
 })
 
-
-
 $('#importButton').click(function(e)
 {
 	$.ajax(
@@ -17,14 +15,40 @@ $('#importButton').click(function(e)
 	.done(function(response)
 	{
 	    console.log(response);
-
-	    $('#portArea').html(response);
+	    $('#portArea').val(response);
 	})
 	.fail(function()
 	{
 	    console.log('mist');
 	});
 });
+
+$('#exportButton').click(function(e)
+{
+    console.log("export");
+    console.log("Inhalt:");
+    console.log($('#portArea').val());
+    console.log("Inhalt vorbei");
+    $.ajax(
+    {
+	type:'POST',
+	url: app_url_php+'importer.php',
+	data: {data:$('#portArea').val(), type:'export'}
+    })
+    .done(function(response)
+    {
+	location.reload();
+    })
+    .fail(function()
+    {
+	 console.log('mist');
+    });
+});
+
+
+
+
+
 
 $(function()
 {

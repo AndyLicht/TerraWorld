@@ -111,7 +111,7 @@
 					<div class="tab-pane fade"id="port">
 						<p>
 							<h3>Import/Export <button type="button" id="importButton"class="btn btn-default"><span class="glyphicon glyphicon-import" ></span></button> <button type="button" id="exportButton"class="btn btn-default"><span class="glyphicon glyphicon-export" ></span></button></h3>
-							<pre id="portArea"></pre>
+							<textarea id="portArea"></textarea>
 						</p>
 					</div>
 				</div>
