@@ -23,12 +23,28 @@ $('#importButton').click(function(e)
 	});
 });
 
+$('#importDefault').click(function(e)
+{
+    $.ajax(
+    {
+	type:'POST',
+	url: app_url_php+'defaultimport.php',
+    })
+    .done(function(response)
+    {
+	console.log(response);
+	$('#portArea').val(response);
+    })
+    .fail(function()
+    {
+        console.log('mist');
+    });
+});
+
+
+
 $('#exportButton').click(function(e)
 {
-    console.log("export");
-    console.log("Inhalt:");
-    console.log($('#portArea').val());
-    console.log("Inhalt vorbei");
     $.ajax(
     {
 	type:'POST',
@@ -45,6 +61,24 @@ $('#exportButton').click(function(e)
     });
 });
 
+$('#exportDefault').click(function(e)
+{
+    $.ajax(
+    {
+	type:'POST',
+	url: app_url_php+'defaultimport.php',
+	data: {data:$('#portArea').val(), type:'export'}
+    })
+    .done(function(response)
+    {
+	//location.reload();
+	console.log("save");
+    })
+    .fail(function()
+    {
+	console.log('mist');
+    });
+});
 
 
 

@@ -110,7 +110,7 @@
 					</div>
 					<div class="tab-pane fade"id="port">
 						<p>
-							<h3>Import/Export <button type="button" id="importButton"class="btn btn-default"><span class="glyphicon glyphicon-import" ></span></button> <button type="button" id="exportButton"class="btn btn-default"><span class="glyphicon glyphicon-export" ></span></button></h3>
+							<h3>Import/Export <button type="button" id="importButton"class="btn btn-default"><span class="glyphicon glyphicon-import" ></span></button> <button type="button" id="exportButton"class="btn btn-default"><span class="glyphicon glyphicon-export" ></span></button> <button type="button" id="importDefault" class="btn btn-default"><span class="glyphicon glyphicon-folder-open" ></span></button> <button type="button" id="exportDefault"class="btn btn-default"><span class="glyphicon glyphicon-folder-close" ></span></button></h3>
 							<textarea id="portArea"></textarea>
 						</p>
 					</div>

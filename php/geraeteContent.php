@@ -40,8 +40,8 @@ function geraeteControl($json)
 		{
 			echo '<form class="form-inline">
 				<div class="form-group">
-					<label for="my-checkbox">'.$geraet['title'].$geraet['status'].': </label>';
-					if($geraet['status'] === "true" || $geraet['status'] === "True" )
+					<label for="my-checkbox">'.$geraet['title'].': </label>';
+					if($geraet['status'] === true || $geraet['status'] === "True" )
 					{	
 						echo '<input tid="'.$tkey.'" gid="'.$gkey.'" type="checkbox" name="my-checkbox" checked>';
 					}
