@@ -63,11 +63,6 @@
 						<p>
 							<?php
 								contentUebersicht($json);
-								echo"<div>";
-								var_dump($reply);
-								echo "<br>";
-								var_dump($json);
-								echo "</div>";
 							?>
 						</p>
 					</div>

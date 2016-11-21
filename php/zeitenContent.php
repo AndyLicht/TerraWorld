@@ -14,7 +14,6 @@ function zeitenTables($json)
 		echo '<h3>'.$terra['title'].'</h3><br>';
 		foreach ($terra['geraete'] as $gkey => $geraet)
 		{
-			echo '<h4>'.$geraet['title'].'</h4><br>';
 			echo 	'<table class="table" geraeteid="'.$gkey.'" terraid="'.$key.'">
 						<caption><h3>'.$geraet['title'].'  <button type="button" terraid="'.$key.'" geraeteid ="'.$gkey.'"class="btn btn-default" data-toggle="modal" data-target="#zeit"><span class="glyphicon glyphicon-plus" ></span></button></h3></caption>
 						<thead>
