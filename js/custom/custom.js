@@ -11,6 +11,7 @@ $('#importButton').click(function(e)
 	{
 		type:'POST',
 		url: app_url_php+'importer.php',
+		data: {type:'import'}
 	})
 	.done(function(response)
 	{
@@ -29,6 +30,7 @@ $('#importDefault').click(function(e)
     {
 	type:'POST',
 	url: app_url_php+'defaultimport.php',
+	data: {type:'import'}
     })
     .done(function(response)
     {

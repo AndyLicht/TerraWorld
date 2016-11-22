@@ -1,0 +1,29 @@
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.navbar {
+    border-radius: 0px;
+}
+.navbar-collapse
+{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+.navbar-default
+{
+	border-color: none;
+	border:none;
+}
+.nav
+{
+	margin-left:0px;
+	margin-right:0px;
+}
+#menuContainer
+{
+	padding-right: 0px;
+	padding-left: 0px;
+	height:100vh;
+	background-color: #f8f8f8;
+}

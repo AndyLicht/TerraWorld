@@ -39,8 +39,7 @@ function geraeteControl($json)
 		foreach ($terra['geraete'] as $gkey => $geraet)
 		{
 			echo '<form class="form-inline">
-				<div class="form-group">
-					<label for="my-checkbox">'.$geraet['title'].': </label>';
+				<div class="form-group">';
 					if($geraet['status'] === true || $geraet['status'] === "True" )
 					{	
 						echo '<input tid="'.$tkey.'" gid="'.$gkey.'" type="checkbox" name="my-checkbox" checked>';
@@ -49,7 +48,8 @@ function geraeteControl($json)
 					{
 						echo '<input tid="'.$tkey.'" gid="'.$gkey.'" type="checkbox" name="my-checkbox">';
 					}
-					echo '</div></form>';
+					echo '
+					<label for="my-checkbox">'.$geraet['title'].'</label></div></form>';
 		}
 		echo "<hr>";
 	}

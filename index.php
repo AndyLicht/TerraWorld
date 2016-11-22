@@ -18,11 +18,12 @@
     <title>TerraWorld v3.0</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap-switch/bootstrap-switch.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/dashboard/dashboard.css" rel="stylesheet">
+	<link href="css/custom/custom.css" rel="stylesheet">
   </head>
 
   <body>
@@ -42,22 +43,37 @@
 		$json = json_decode($reply, true);
 	}
   ?>
-		<div class="container-fluid">
+	<!--<div class="container-fluid">-->
 		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
-				<h1>TerraWorld</h1>
-				<ul class="nav nav-sidebar" id="myTabs">
-					<li class="active"><a href="#übersicht">Übersicht <span class="sr-only">(current)</span></a></li>
-					<li><a href="#steuerung">Steuerung</a></li>
-					<li><a href="#terrarien">Terrarien</a></li>
-					<li><a href="#sensoren">Sensoren</a></li>
-					<li><a href="#geräte">Geräte</a></li>
-					<li><a href="#zeiten">Zeiten</a></li>
-					<li><a href="#kameras">Kameras</a></li>
-					<li><a href="#port">Import/Export</a></li>
-				</ul>
+			<div class="col-md-2" id="menuContainer">
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse">
+						<div class="panel-heading"><h2>TerraWorld</h2></div>
+						<ul class="nav nav-sidebar" id="myTabs">
+							<li class="active"><a href="#übersicht">Übersicht <span class="sr-only">(current)</span></a></li>
+							<li><a href="#steuerung">Steuerung</a></li>
+							<li><a href="#terrarien">Terrarien</a></li>
+							<li><a href="#sensoren">Sensoren</a></li>
+							<li><a href="#geräte">Geräte</a></li>
+							<li><a href="#zeiten">Zeiten</a></li>
+							<li><a href="#kameras">Kameras</a></li>
+							<li><a href="#port">Import/Export</a></li>              
+						</ul>
+					</div>
+				</nav>
+				<div>
+				Version 3.0<br>
+				Tim Balschmiter
+				</div>
 			</div>
-			<div class="col-md-10 col-md-offset-2 main">
+			<div class=" col-md-9 main">
 				<div class="tab-content" id="myTabContent"> 
 					<div class="tab-pane fade active in" id="übersicht">
 						<p>
@@ -81,7 +97,6 @@
 							<?php
 								contentTerrarien($json);
 							?>
-							
 						</p>
 					</div>
 					<div class="tab-pane fade" id="sensoren">
@@ -109,11 +124,13 @@
 							<textarea id="portArea"></textarea>
 						</p>
 					</div>
-				</div>
-				
-				
+				</div>  
 			</div>
 		</div>
+	<!--</div>-->
+
+				
+		
 
 		<!-- Bootstrap core JavaScript
 		================================================== -->
