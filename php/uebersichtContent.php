@@ -9,10 +9,10 @@
 				echo "<h3>Sensoren: ".$terra['title']."</h3><br>";
 				foreach($terra['sensoren'] as $sensor)
 				{
-				echo $sensor['title']." (gemessen um: ".$sensor['time'].")<br>";
-				echo "relative Luftfeuchtigkeit: ".$sensor['humidity']."%<br>";
-				echo "Temperatur: ".$sensor['temp']."°<br>";
-				echo "<br>";
+					echo $sensor['title']." (gemessen um: ".$sensor['time']." am ".$sensor['date'].")<br>";
+					echo "relative Luftfeuchtigkeit: ".$sensor['humidity']."%<br>";
+					echo "Temperatur: ".$sensor['temp']."°<br>";
+					echo "<br>";
 				}
 			}
 		}

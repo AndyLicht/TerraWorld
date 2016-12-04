@@ -57,21 +57,10 @@ while True:
 					json_[tkey]['sensoren'][skey]['humidity'] = message[3]
 					json_[tkey]['sensoren'][skey]['time'] = time
 					json_[tkey]['sensoren'][skey]['date'] = date
-					if 'archive' not in  json_[tkey]['sensoren'][skey]:
-						print "archive does not exists"
-						json_[tkey]['sensoren'][skey]['archive'] = {}
+					if json_[tkey]['sensoren'][skey]['archive']:
 					else:
-						print "setze werte"
-						if date not in  json_[tkey]['sensoren'][skey]['archive']:
-							json_[tkey]['sensoren'][skey]['archive'][date] = {}
-							json_[tkey]['sensoren'][skey]['archive'][date][time] = {}
-							json_[tkey]['sensoren'][skey]['archive'][date][time]['temp'] = message[2]
-							json_[tkey]['sensoren'][skey]['archive'][date][time]['humidity'] = message[3]
-						else:
-							print "Datum vorhanden"
-							json_[tkey]['sensoren'][skey]['archive'][date][time] = {}
-							json_[tkey]['sensoren'][skey]['archive'][date][time]['temp'] = message[2]
-	                                        	json_[tkey]['sensoren'][skey]['archive'][date][time]['humidity'] = message[3]
+					json_[tkey]['sensoren'][skey]['archive'][date][time]['temp'] = message[2]
+					json_[tkey]['sensoren'][skey]['archive'][date][time]['humidity'] = message[3]
 		socket.send('Klima');
 	else:
 		socket.send('error')

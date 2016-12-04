@@ -11,5 +11,6 @@ while True:
         message = ser.readline()
 	message = message.replace("\r","")
 	message = message.replace("\n","")
+	print message
         socket.send(message)
         msg_in = socket.recv()
