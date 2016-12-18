@@ -50,9 +50,9 @@ while True:
 			command = 'sispmctl -d %s %s %s' % (json.dumps(json_[message[1]]["geraete"][message[2]]["device"]).decode('string-escape'),message[4], json.dumps(json_[message[1]]["geraete"][message[2]]["number"]).decode('string-escape'))
 			command = command.replace('\"','')
 			os.system(command)
-			socket.send("ok")
+			socket.send("200")
 		except:
-			socket.send('Schaltungserror')
+			socket.send("404")
 	#Ausgabe der aktuellen Konfiguration
 	elif message[0] == "i":
 		try:

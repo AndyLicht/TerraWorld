@@ -1,3 +1,29 @@
+//Quelle http://www.jquerybyexample.net/2012/06/get-url-parameters-using-jquery.html
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+
+//Get Parameter auswerten
+if(!getUrlParameter('target'))
+{
+    console.log('nicht definiert');
+}
+else
+{
+    $('.nav-sidebar a[href="#'+getUrlParameter('target')+'"]').tab('show');
+}
 //Navigation auf der linken Seite
 $('#myTabs a').click(function (e) 
 {
@@ -112,15 +138,7 @@ $(function()
 	    })
 	    .done(function(response)
 	    {
-		if (response === 'OK')
-		{
-		    //location.reload();
-		}
-		else
-    		{
-		    alert('ERROR, siehe console.log');
-		    console.log(response);
-		}
+		window.location.replace(location.origin +"?target=steuerung");
 	    })
 	    .fail(function(XMLHttpRequest, textStatus, errorThrown)
 	    {

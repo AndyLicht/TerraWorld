@@ -4,5 +4,5 @@
     $requester->connect("tcp://127.0.0.1:5000");
     $requester->send("s/".$_POST["tid"]."/".$_POST["gid"]."/".$_POST["state"]."/".$_POST["command"]);
     $reply = $requester->recv();
-    echo $reply;
+    http_response_code($reply);
 ?>
