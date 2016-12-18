@@ -19,10 +19,11 @@
 			break;
 		default:
 			echo "dieser Type wird nicht utnerstützt";
-			break;
+			http_response_code(404);;
 	}
 	writeJSON();
-	echo 'OK';
+	http_response_code(200);
+
 
 	function createItem()
 	{

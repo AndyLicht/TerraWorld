@@ -22,7 +22,7 @@ function sensorenTables($json)
 					<tbody>';
 					foreach($terra['sensoren'] as $skey => $sensor)
 					{
-						echo '<tr><td key="id">'.$skey.'</td><td key="title">'.$sensor['title'].'</td><td key="number">'.$sensor['number'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" geraeteid="" terraid="'.$key.'" itemType="sensor"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="sensor"></span></td></tr>';
+						echo '<tr><td key="id">'.$skey.'</td><td key="title">'.$sensor['title'].'</td><td key="number">'.$sensor['number'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" geraeteid="" terraid="'.$key.'" linkType="sensoren" itemType="sensor"></span> <span class="glyphicon glyphicon-trash deleteItem" linkType="sensoren" itemType="sensor"></span></td></tr>';
 					}
 		echo 		'</tbody>
 				</table>';
@@ -49,7 +49,7 @@ function sensorenModal()
 				</div>
 				<div class="modal-footer">
 					<div class="statusmeldung" id="sensorenstatusmeldung"></div>
-					<button type="button" class="btn btn-primary saveItem" id="saveSensoren" itemType="sensor">Save changes</button>
+					<button type="button" class="btn btn-primary saveItem" id="saveSensoren" linkType="sensoren" itemType="sensor">Save changes</button>
 				</div>
 			</div>
 		</div>

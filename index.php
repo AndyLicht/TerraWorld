@@ -61,10 +61,10 @@
 							<li><a href="#steuerung">Steuerung</a></li>
 							<li><a href="#terrarien">Terrarien</a></li>
 							<li><a href="#sensoren">Sensoren</a></li>
-							<li><a href="#geräte">Geräte</a></li>
+							<li><a href="#geraete">Geräte</a></li>
 							<li><a href="#zeiten">Zeiten</a></li>
 							<li><a href="#kameras">Kameras</a></li>
-							<li><a href="#port">Import/Export</a></li>              
+							<li><a href="#port">Import/Export</a></li>
 						</ul>
 					</div>
 				</nav>
@@ -84,20 +84,18 @@
 					</div>
 					<div class="tab-pane fade" id="steuerung">
 						<?php
-								geraeteControl($json);
-							?>
+							geraeteControl($json);
+						?>
 					</div>
-					<div class="tab-pane fade" id="geräte">
+					<div class="tab-pane fade" id="geraete">
 						<?php
-								contentGeraete($json);
-							?>
+							contentGeraete($json);
+						?>
 					</div>
-					<div class="tab-pane fade" id="terrarien"> 
-						<p>
-							<?php
-								contentTerrarien($json);
-							?>
-						</p>
+					<div class="tab-pane fade" id="terrarien">
+						<?php
+							contentTerrarien($json);
+						?>
 					</div>
 					<div class="tab-pane fade" id="sensoren">
 						<p>

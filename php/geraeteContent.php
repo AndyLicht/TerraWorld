@@ -24,7 +24,7 @@ function geraeteTables($json)
 					<tbody>';
 					foreach($terra['geraete'] as $gkey => $geraet)
 					{
-						echo '<tr><td key="id">'.$gkey.'</td><td key="title">'.$geraet['title'].'</td><td key="type">'.$geraet['type'].'</td><td key="device">'.$geraet['device'].'</td><td key="number">'.$geraet['number'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" geraeteid="" terraid="'.$key.'" itemType="geraet"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="geraet"></span></td></tr>';
+						echo '<tr><td key="id">'.$gkey.'</td><td key="title">'.$geraet['title'].'</td><td key="type">'.$geraet['type'].'</td><td key="device">'.$geraet['device'].'</td><td key="number">'.$geraet['number'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" geraeteid="" terraid="'.$key.'" linkType="geraete" itemType="geraet"></span> <span class="glyphicon glyphicon-trash deleteItem" linkType="geraete" itemType="geraet"></span></td></tr>';
 					}
 		echo 		'</tbody>
 				</table>';
@@ -89,7 +89,7 @@ function geraeteModal()
 				</div>
 				<div class="modal-footer">
 					<div class="statusmeldung" id="geraetestatusmeldung"></div>
-					<button type="button" class="btn btn-primary saveItem" id="saveGeraete" itemType="geraet">Save changes</button>
+					<button type="button" class="btn btn-primary saveItem" id="saveGeraete" linkType="geraete" itemType="geraet">Save changes</button>
 				</div>
 			</div>
 		</div>

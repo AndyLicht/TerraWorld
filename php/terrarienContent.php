@@ -21,7 +21,7 @@ function terraTable($json)
 	<?php
 		foreach ($json as $key => $terra)
 		{
-			echo '<tr><td key="id">'.$key.'</td><td key="title">'.$terra['title'].'</td><td key="description">'.$terra['description'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" itemType="terrarium"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="terrarium"></span></td></tr>';
+			echo '<tr><td key="id">'.$key.'</td><td key="title">'.$terra['title'].'</td><td key="description">'.$terra['description'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" linkType="terrarien" itemType="terrarium"></span> <span class="glyphicon glyphicon-trash deleteItem" linkType="terrarien" itemType="terrarium"></span></td></tr>';
 		};
 	?>
 	</tbody>
@@ -49,7 +49,7 @@ function terrariumModal()
 				</div>
 				<div class="modal-footer">
 					<div class="statusmeldung" id="terrastatusmeldung"></div>					
-					<button type="button" class="btn btn-primary saveItem" id="saveTerra" itemType="terrarium">Save changes</button>
+					<button type="button" class="btn btn-primary saveItem" id="saveTerra" linkType="terrarien" itemType="terrarium">Save changes</button>
 				</div>
 			</div>
 		</div>

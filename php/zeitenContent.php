@@ -25,7 +25,7 @@ function zeitenTables($json)
 						<tbody>';
 							foreach($geraet['schaltung'] as $skey => $schaltung)
 							{
-								echo '<tr><td key="id">'.$skey.'</td><td key="on">'.$schaltung['on'].'</td><td key="off">'.$schaltung['off'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" geraeteid="" terraid="'.$key.'" itemType="zeit"></span> <span class="glyphicon glyphicon-trash deleteItem" itemType="zeit"></span></td></tr>';
+								echo '<tr><td key="id">'.$skey.'</td><td key="on">'.$schaltung['on'].'</td><td key="off">'.$schaltung['off'].'</td><td key="options"><span class="glyphicon glyphicon-cog manipulateItem" geraeteid="" terraid="'.$key.'" linkType="zeiten" itemType="zeit"></span> <span class="glyphicon glyphicon-trash deleteItem" linkType="zeiten"  itemType="zeit"></span></td></tr>';
 							}
 						echo '</tbody>
 				</table>';
@@ -54,7 +54,7 @@ function zeitenModal()
 				</div>
 				<div class="modal-footer">
 					<div class="statusmeldung" id="zeitenstatusmeldung"></div>
-					<button type="button" class="btn btn-primary saveItem" id="saveZeiten" itemType="zeit">Save changes</button>
+					<button type="button" class="btn btn-primary saveItem" id="saveZeiten" linkType="zeiten" itemType="zeit">Save changes</button>
 				</div>
 			</div>
 		</div>

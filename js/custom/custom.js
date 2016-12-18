@@ -83,7 +83,7 @@ $('#exportButton').click(function(e)
     })
     .done(function(response)
     {
-	location.reload();
+	window.location.replace(location.origin +"?target=port");
     })
     .fail(function(error)
     {
@@ -102,7 +102,7 @@ $('#exportDefault').click(function(e)
     })
     .done(function(response)
     {
-	//location.reload();
+	window.location.replace(location.origin +"?target=port");
 	console.log("save");
     })
     .fail(function(error)
@@ -114,7 +114,7 @@ $('#exportDefault').click(function(e)
 
 
 
-
+//Schalten der Geräte
 
 $(function()
 {
