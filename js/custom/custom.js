@@ -18,9 +18,10 @@ $('#importButton').click(function(e)
 	    console.log(response);
 	    $('#portArea').val(response);
 	})
-	.fail(function()
+	.fail(function(error)
 	{
-	    console.log('mist');
+	    console.log('Error:');	
+	    console.log(error);
 	});
 });
 
@@ -37,9 +38,10 @@ $('#importDefault').click(function(e)
 	console.log(response);
 	$('#portArea').val(response);
     })
-    .fail(function()
+    .fail(function(error)
     {
-        console.log('mist');
+	console.log('Error:');
+        console.log(error);
     });
 });
 
@@ -57,9 +59,10 @@ $('#exportButton').click(function(e)
     {
 	location.reload();
     })
-    .fail(function()
+    .fail(function(error)
     {
-	 console.log('mist');
+	 console.log('Error:');
+         console.log(error);
     });
 });
 
@@ -76,9 +79,10 @@ $('#exportDefault').click(function(e)
 	//location.reload();
 	console.log("save");
     })
-    .fail(function()
+    .fail(function(error)
     {
-	console.log('mist');
+	console.log('Error:');
+        console.log(error);
     });
 });
 

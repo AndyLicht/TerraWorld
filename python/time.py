@@ -7,7 +7,7 @@ socket.connect("tcp://127.0.0.1:5000")
 second_old = 0
 while True:
         t = datetime.now()
-	d = datetime.today() - timedelta(2)
+	d = datetime.today() - timedelta(0)
         if second_old != t.second:
 #		print d
                 second_old = t.second

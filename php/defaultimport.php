@@ -20,9 +20,17 @@ function loadJSON()
 function writeJSON($data)
 {
 	echo $data;
-	$fp = fopen('../json/default.json', 'w');
-	fwrite($fp, $data);
-	fclose($fp);
-	echo "OK";
+	try
+	{
+		$fp = fopen('../json/default.json', 'w');
+		fwrite($fp, $data);
+		fclose($fp);
+		http_response_code(200);
+	}
+	catch (Exception $e)
+	{
+		var_dump($e);
+		http_response_code(404);
+	}
 }
 ?>
