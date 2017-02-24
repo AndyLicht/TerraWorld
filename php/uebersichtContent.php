@@ -16,8 +16,11 @@
 					echo "<br></div>";
 					echo "<div class='col-md-8' id=".$sensorID."></div></div>";
 				}
+				foreach($terra['kameras'] as $kkey => $kamera)
+				{
+					echo "<img src='img/".$kkey.".jpg' alt='Smiley face' height='320' width='480'>";
+				}
 			}
 		}
-		echo "<img src='img/image.jpg' alt='Smiley face' height='600' width='800'>";
 	}
 ?>

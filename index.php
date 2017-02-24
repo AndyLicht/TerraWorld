@@ -4,6 +4,7 @@
 	include 'php/geraeteContent.php';
 	include 'php/sensorenContent.php';
 	include 'php/zeitenContent.php';
+	include 'php/kamerasContent.php';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -64,6 +65,7 @@
 							<li><a href="#geraete">Geräte</a></li>
 							<li><a href="#zeiten">Zeiten</a></li>
 							<li><a href="#kameras">Kameras</a></li>
+							<li><a href="#archiv">Archiv</a></li>
 							<li><a href="#port">Import/Export</a></li>
 						</ul>
 					</div>
@@ -113,7 +115,9 @@
 					</div>
 					<div class="tab-pane fade"id="kameras">
 						<p>
-							<h3>Kameras</h3>
+							<?php
+								contentKameras($json);
+							?>
 						</p>
 					</div>
 					<div class="tab-pane fade"id="port">
@@ -122,7 +126,14 @@
 							<textarea id="portArea"></textarea>
 						</p>
 					</div>
-				</div>  
+					<div class="tab-pane fade"id="archiv">
+						<p>
+							<h3>Einstellungen für die Sensorarchivierung</h3>
+							<input type="text" class="" key="id" id="archivMinuten" placeholder="Kommaseparierte Liste von Minuten angaben">
+							<button type="button" class="btn btn-primary saveItem" id="saveArchiv" linkType="archiv" itemType="archiv">Save</button>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	<!--</div>-->

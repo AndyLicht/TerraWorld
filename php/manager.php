@@ -18,7 +18,7 @@
 			}
 			break;
 		default:
-			echo "dieser Type wird nicht utnerstützt";
+			echo "dieser Type wird nicht unterstützt";
 			http_response_code(404);;
 	}
 	writeJSON();
@@ -34,9 +34,9 @@
 					'title' => $_POST['title'],
 					'description' => $_POST['description'],
 					'sensoren' => array(),
-					'geraete' => array()
+					'geraete' => array(),
+					'kameras' => array()
 				);
-				//var_dump($GLOBALS['json']);
 				$GLOBALS['json'][uniqid()] = $arr;
 				break;
 			case "sensor":
@@ -51,7 +51,6 @@
 				break;
 			case "geraet":
 				$arr = array(
-					'id' => uniqid(),
 					'title' => $_POST['title'],
 					'type' => $_POST['type'],
 					'device' => $_POST['device'],
@@ -60,6 +59,15 @@
 					'schaltung' => []
 				);
 				$GLOBALS['json'][$_POST['terraid']]['geraete'][uniqid()] = $arr;
+				break;
+			case "kamera":
+				$arr = array(
+				    'title' => $_POST['title'],
+				    'type' => $_POST['type'],
+				    'device' => $_POST['device'],
+				    'kameraminutes' => $_POST['kameraminutes']
+				);
+				$GLOBALS['json'][$_POST['terraid']]['kameras'][uniqid()] = $arr;
 				break;
 			case "zeit":
 				$arr = array(
@@ -84,12 +92,14 @@
 			case 'geraet':
 				unset($GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['id']]);
 				break;
+			case 'kamera':
+				unset($GLOBALS['json'][$_POST['terraid']]['kameras'][$_POST['id']]);
+				break;
 			case 'zeit':
 				unset($GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['geraeteid']]['schaltung'][$_POST['id']]);
 				break;		
 		}
 	}
-	
 	
 	function manipulateItem()
 	{
@@ -108,6 +118,12 @@
 				$GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['id']]['type'] = $_POST['type'];
 				$GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['id']]['device'] = $_POST['device'];
 				$GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['id']]['number'] = $_POST['number'];
+				break;
+			case "kamera":
+				$GLOBALS['json'][$_POST['terraid']]['kameras'][$_POST['id']]['title'] = $_POST['title'];
+				$GLOBALS['json'][$_POST['terraid']]['kameras'][$_POST['id']]['type'] = $_POST['type'];
+				$GLOBALS['json'][$_POST['terraid']]['kameras'][$_POST['id']]['device'] = $_POST['device'];
+				$GLOBALS['json'][$_POST['terraid']]['kameras'][$_POST['id']]['kameraminutes'] = $_POST['kameraminutes'];
 				break;
 			case "zeit":
 				$GLOBALS['json'][$_POST['terraid']]['geraete'][$_POST['geraeteid']]['schaltung'][$_POST['id']]['on'] = $_POST['on'];
