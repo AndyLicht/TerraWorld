@@ -21,7 +21,7 @@ while True:
 	print "Eingang"
 	print msg
 	message = msg.split('/')
-	#jede Sekunde wird geschaut ob ein Geraet geschaltet werden muss, gleichzeitig erhalten time und date einen Wert
+	#jede Sekunde wird überprüft, ob ein Gerät geschaltet werden muss, gleichzeitig erhalten time und date einen Wert
         if message[0] == "t":
 		time = message[1]
 		time_ = time.split(':')
@@ -41,7 +41,8 @@ while True:
 						command = 'sispmctl -d %s -f %s' % (json.dumps(json_[tkey]['geraete'][gkey]['device']).decode('string-escape'),json.dumps(json_[tkey]['geraete'][gkey]['number']).decode('string-escape'))
 			                        command = command.replace('\"','')
                         			os.system(command)
-		#Pruefen ob die Webcams ein Bild machen muss
+		#Prüfen ob die Webcams ein Bild machen muss
+		#dabei wird getestet ob Sekunde 0 ist, denn nur zu definierten vollen Minuten werden ein Webcam-Bild erzeugt
 		if time_[2] == '0':
 			for tkey in json_:
 		    		for kkey in json_[tkey]['kameras']:
@@ -89,7 +90,7 @@ while True:
 					except:
 						print "Error beim Loeschen, oder es gab keinen Eintrag"
 		socket.send("ok")
-	#die Geraete werden manuell ueber die GUI gesteuert
+	#die Geräte werden manuell über die GUI gesteuert
 	elif message[0] == "s":
 		try:
 			json_[message[1]]["geraete"][message[2]]["status"] = json.loads(message[3])
